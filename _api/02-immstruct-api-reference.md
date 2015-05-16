@@ -284,10 +284,11 @@ See more examples in the [readme](https://github.com/omniscientjs/immstruct)
 ### Event names
 Event names can be either
 
- * `add`: When new data/value is added
- * `delete`: When data/value is removed
- * `change`: When data/value is updated and it existed before
- * `swap`: When cursor is updated (new information is set). Emits no values. One use case for this is to re-render design components
+* `swap`: Emitted when cursor is updated (new information is set). Emits no values. One use case for this is to re-render design components. Callback is passed arguments: `newStructure`, `oldStructure`, `keyPath`.
+* `next-animation-frame`: Same as `swap`, but only emitted on animation frame. Could use with many render updates and better performance. Callback is passed arguments: `newStructure`, `oldStructure`.
+* `change`: Emitted when data/value is updated and it existed before. Emits values: `path`, `newValue` and `oldValue`.
+* `delete`: Emitted when data/value is removed. Emits value: `path` and `removedValue`.
+* `add`: Emitted when new data/value is added. Emits value: `path` and `newValue`.
 
 
 ### Parameters
