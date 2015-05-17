@@ -11,6 +11,8 @@ next: 02-immstruct-api-reference
 
 More information can be found on the [Omniscient repo](https://github.com/omniscientjs/omniscient).
 
+===
+
 ### `omniscient(displayName, mixins, render)`
 
 Create components for functional views.
@@ -27,7 +29,7 @@ If you simply pass one cursor, the cursor will be accessible on the
 component's arguments will not be tracked for changes.
 
 
-### Parameters
+#### Parameters
 
 | param         | type         | description                                                                                          |
 | ------------- | ------------ | ---------------------------------------------------------------------------------------------------- |
@@ -36,7 +38,7 @@ component's arguments will not be tracked for changes.
 | `render`      | Function     | Properties that do not trigger update when changed. Can be cursors, object and immutable structures  |
 
 
-### Properties
+#### Properties
 
 | property                | type     | description                        |
 | ----------------------- | -------- | ---------------------------------- |
@@ -46,6 +48,7 @@ component's arguments will not be tracked for changes.
 
 **Returns** `Component`,
 
+===
 
 ### `omniscient.withDefaults(Options)`
 
@@ -53,7 +56,7 @@ Create a “local” instance of the Omniscient component creator by using the `
 This also allows you to override any defaults that Omniscient use to check equality of objects,
 unwrap cursors, etc.
 
-### Options
+#### Options
 ```js
 {
   // Goes directly to component
@@ -72,8 +75,8 @@ unwrap cursors, etc.
 }
 ```
 
-### Examples
-#### Always use JSX
+#### Examples
+##### Always use JSX
 ```js
 var component = require('omniscient');
 var jsxComponent = component.withDefaults({
@@ -86,7 +89,7 @@ var Greeting = jsxComponent(function () {
 React.render(, document.body);
 ```
 
-#### Un-wrapping curors
+##### Un-wrapping curors
 ```jsx
 var localComponent = component.withDefaults({
   cursorField: 'foobar'
@@ -100,14 +103,14 @@ React.render(, document.body);
 ```
 
 
-### Parameters
+#### Parameters
 
 | param     | type   | description                        |
 | --------- | ------ | ---------------------------------- |
 | `Options` | Object | Options with defaults to override  |
 
 
-### Properties
+#### Properties
 
 | property                | type     | description                        |
 | ----------------------- | -------- | ---------------------------------- |
@@ -117,6 +120,7 @@ React.render(, document.body);
 
 **Returns** `Component`,
 
+===
 
 ### `omniscient.debug(pattern)`
 
@@ -132,14 +136,14 @@ SearchBox>: render
 ```
 
 
-### Parameters
+#### Parameters
 
 | param     | type   | description                                          |
 | --------- | ------ | ---------------------------------------------------- |
 | `pattern` | RegExp | Filter pattern. Only show messages matching pattern  |
 
 
-### Properties
+#### Properties
 
 | property | type   | description                   |
 | -------- | ------ | ----------------------------- |
@@ -155,13 +159,14 @@ omniscient.debug(/Search/i);
 
 **Returns** `Immstruct`,
 
+===
 
 ### `Component(displayName, props, statics, ..rest)`
 
 Invoke component (rendering it)
 
 
-### Parameters
+#### Parameters
 
 | param         | type   | description                                                                                          |
 | ------------- | ------ | ---------------------------------------------------------------------------------------------------- |
@@ -171,7 +176,7 @@ Invoke component (rendering it)
 | `..rest`      | Object | Child components (React elements, scalar values)                                                     |
 
 
-### Properties
+#### Properties
 
 | property | type   | description                   |
 | -------- | ------ | ----------------------------- |
@@ -181,6 +186,7 @@ Invoke component (rendering it)
 
 **Returns** `ReactElement`,
 
+===
 
 ### `shouldComponentUpdate(nextProps, nextState)`
 
@@ -188,7 +194,7 @@ Directly fetch `shouldComponentUpdate` mixin to use outside of Omniscient.
 You can do this if you don't want to use Omniscients syntactic sugar.
 
 
-### Parameters
+#### Parameters
 
 | param       | type   | description                                                           |
 | ----------- | ------ | --------------------------------------------------------------------- |
@@ -196,7 +202,7 @@ You can do this if you don't want to use Omniscients syntactic sugar.
 | `nextState` | Object | Next state. Can be objects of values or immutable structures          |
 
 
-### Properties
+#### Properties
 
 | property        | type     | description               |
 | --------------- | -------- | ------------------------- |
@@ -211,12 +217,13 @@ You can do this if you don't want to use Omniscients syntactic sugar.
 
 **Returns** `Component`,
 
+===
 
 ### `shouldComponentUpdate.withDefaults([Options])`
 
 Create a “local” instance of the shouldComponentUpdate with overriden defaults.
 
-### Options
+#### Options
 ```js
 {
   isCursor: function(cursor), // check if is props
@@ -229,7 +236,7 @@ Create a “local” instance of the shouldComponentUpdate with overriden defaul
 ```
 
 
-### Parameters
+#### Parameters
 
 | param       | type   | description                                    |
 | ----------- | ------ | ---------------------------------------------- |
@@ -239,6 +246,7 @@ Create a “local” instance of the shouldComponentUpdate with overriden defaul
 
 **Returns** `Function`, shouldComponentUpdate with overriden defaults
 
+===
 
 ### `shouldComponentUpdate.isEqualState(value, other)`
 
@@ -248,7 +256,7 @@ and if it is, check by reference. Does not support cursors.
 Override through `shouldComponentUpdate.withDefaults`.
 
 
-### Parameters
+#### Parameters
 
 | param   | type   | description |
 | ------- | ------ | ----------- |
@@ -259,6 +267,7 @@ Override through `shouldComponentUpdate.withDefaults`.
 
 **Returns** `Boolean`,
 
+===
 
 ### `shouldComponentUpdate.isEqualProps(value, other)`
 
@@ -268,7 +277,7 @@ and if it is, check by reference.
 Override through `shouldComponentUpdate.withDefaults`.
 
 
-### Parameters
+#### Parameters
 
 | param   | type   | description |
 | ------- | ------ | ----------- |
@@ -279,6 +288,7 @@ Override through `shouldComponentUpdate.withDefaults`.
 
 **Returns** `Boolean`,
 
+===
 
 ### `shouldComponentUpdate.isEqualCursor(a, b)`
 
@@ -287,7 +297,7 @@ Override through `shouldComponentUpdate.withDefaults` to support different curso
 implementations.
 
 
-### Parameters
+#### Parameters
 
 | param | type   | description |
 | ----- | ------ | ----------- |
@@ -298,6 +308,7 @@ implementations.
 
 **Returns** `Boolean`,
 
+===
 
 ### `shouldComponentUpdate.isImmutable(value)`
 
@@ -306,7 +317,7 @@ Override through `shouldComponentUpdate.withDefaults` to support different curso
 implementations.
 
 
-### Parameters
+#### Parameters
 
 | param   | type           | description                   |
 | ------- | -------------- | ----------------------------- |
@@ -316,6 +327,7 @@ implementations.
 
 **Returns** `Boolean`,
 
+===
 
 ### `shouldComponentUpdate.unCursor(cursor)`
 
@@ -324,7 +336,7 @@ Override through `shouldComponentUpdate.withDefaults` to support different curso
 implementations.
 
 
-### Parameters
+#### Parameters
 
 | param    | type   | description   |
 | -------- | ------ | ------------- |
@@ -334,6 +346,7 @@ implementations.
 
 **Returns** `Object,Number,String,Boolean`,
 
+===
 
 ### `shouldComponentUpdate.isCursor(potential)`
 
@@ -341,7 +354,7 @@ Predicate to check if `potential` is Immutable cursor or not (defaults to duck t
 Immutable.js cursors). Can override through `.withDefaults()`.
 
 
-### Parameters
+#### Parameters
 
 | param       | type      | description            |
 | ----------- | --------- | ---------------------- |
@@ -351,6 +364,7 @@ Immutable.js cursors). Can override through `.withDefaults()`.
 
 **Returns** `Boolean`,
 
+===
 
 ### `cached(Function)`
 
@@ -367,7 +381,7 @@ not practical to call it mulitple times with in the same `render`
 call.
 
 
-### Parameters
+#### Parameters
 
 | param      | type     | description               |
 | ---------- | -------- | ------------------------- |
@@ -377,12 +391,13 @@ call.
 
 **Returns** `Function`, Optimized function
 
+===
 
 ### `cached.withDefaults([Options])`
 
 Create a “local” instance of the `cache` with overriden defaults.
 
-### Options
+#### Options
 ```js
 {
   isEqualProps: function (currentProps, nextProps), // check props
@@ -390,7 +405,7 @@ Create a “local” instance of the `cache` with overriden defaults.
 ```
 
 
-### Parameters
+#### Parameters
 
 | param       | type   | description                                    |
 | ----------- | ------ | ---------------------------------------------- |
@@ -400,8 +415,9 @@ Create a “local” instance of the `cache` with overriden defaults.
 
 **Returns** `Function`, cached with overriden defaults
 
-## Private members
+===
 
+## Private members
 
 ### `isNode(propValue)`
 
@@ -412,7 +428,7 @@ React's isNode check from ReactPropTypes validator
 but adjusted to not accept objects to avoid collision with props & statics.
 
 
-### Parameters
+#### Parameters
 
 | param       | type   | description                                     |
 | ----------- | ------ | ----------------------------------------------- |
